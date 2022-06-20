@@ -2,7 +2,7 @@ from os import environ
 
 SESSION_CONFIGS = [
     dict(
-        name='woon_study',
+        name='dbanko_example_survey',
         app_sequence=['s1_instructions', 's1_end'],
         num_demo_participants=10,
         use_browser_bots=False
@@ -44,7 +44,7 @@ ADMIN_USERNAME = 'admin'
 
 DEMO_PAGE_INTRO_HTML = """ """
 
-SECRET_KEY =
+SECRET_KEY = ''
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']

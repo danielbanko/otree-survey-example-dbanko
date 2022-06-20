@@ -6,7 +6,7 @@ import random, csv
 
 
 doc = """
-this app implements the s1_instructions for the survey and includes the comprehension checks as of February 2022. As of April 2022, it has been updated with the treatment logic.
+this app implements the s1_instructions for the survey and includes the comprehension checks.
 """
 
 
@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     elicitation_mechanisms = ['flat', 'bdm', 'bsr']
 
     # build rounds for comprehension checks
-    with open('s1_instructions/surveyqs_intro.csv', newline='') as csvfile:
+    with open('s1_instructions/surveyqs.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         round_parameters = []
         rounds_for_comprehension = 0
