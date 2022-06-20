@@ -1,0 +1,40 @@
+{{ block title }}
+Payment Rule
+{{ endblock }}
+
+{{ block content }}
+We now explain how your Belief is used to determine whether you might win the $8 bonus.
+<br>
+<br>
+There are now two possible ways to win the bonus of $8: the Bucket Game or the Lottery Bag Game.
+<ul>
+    <li>In the Bucket Game, you win the bonus if the Mystery Bucket is Bucket A.</li>
+    <li>In the Lottery Bag Game, you win if a winning lottery ticket is drawn from the Lottery Bag (described next).</li>
+</ul>
+In the Lottery Bag Game, the computer creates a Lottery Bag by randomly choosing a number W between 0 and 100. Each number is equally likely to be chosen. Although the computer knows this number, you do not. You can think of the computer as filling a bag with 100 lottery tickets. W out of 100 tickets in the Lottery Bag are winning tickets, and the rest are not. The computer will then randomly draw one ticket from the Lottery Bag. You win the bonus in the Lottery Bag Game if one of the W winning tickets is drawn.
+<br>
+<br>
+Based on the report of your Belief that Bucket A was selected, the computer will select the game that gives you the highest chance of winning $8.
+<ul>
+    <li>Your chance of winning in the Bucket Game is effectively your Belief-in-100.</li>
+    <li>Your chance of winning in the Lottery Bag Game is W out of 100.</li>
+    <li>If your Belief is greater than W then you will play the Bucket Game. If your Belief is lower than W, you will play the Lottery Bag Game. (If the Bucket Game and Lottery Bag Game both give you an equal chance of winning, you will play the Lottery Bag Game.)</li>
+</ul>
+
+You should think carefully about your Belief, as this procedure is designed so that you have the best chance of winning the bonus when you state your Belief as accurately as possible about the likelihood you think the computer selected Bucket A.
+<br>
+<br>
+<button class="otree-btn-next btn btn-primary" style="float:right;">Next</button>
+
+
+{{ endblock }}
+
+{{ block style }}
+<style>
+.otree-btn-next {
+        float:right;
+}
+
+</style>
+{{ endblock }}
+

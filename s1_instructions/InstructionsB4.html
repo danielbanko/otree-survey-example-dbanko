@@ -1,0 +1,55 @@
+{{ block title }}
+Summary
+{{ endblock }}
+
+{{ block content }}
+<ol>
+    <li><b>Computer tells you the value of X.</b>
+        <ul>
+            <li>The value of X may be different each time you play the game.</li>
+        </ul>
+    </li>
+    <li><b>Computer fills the buckets.</b>
+        <ul>
+            <li>The two buckets are filled with five balls each. </li>
+            <li>Bucket A has 4 light balls and 1 dark ball. </li>
+    	    <li>Bucket B has 1 light ball and 4 dark balls. </li>
+    	    <li>You will always see the exact number of light and dark balls in the two urns.</li>
+        </ul>
+    </li>
+    <li><b>Computer selects Mystery Bucket.</b>
+	    <ul>
+            <li>There is an X-in-10 chance that Bucket A is selected as the Mystery Bucket.</li>
+        </ul>
+    </li>
+    <li><b>You report your first Belief that the Mystery Bucket is Bucket A.</b>
+	    <ul>
+            <li>Provide your best guess about the chance that the computer selected Bucket A knowing X and <em>before</em> seeing the ball.</li>
+        </ul>
+    </li>
+    <li><b>Computer shows you a randomly selected ball from the Mystery Bucket.</b>
+	    <ul>
+            <li>Each ball in the Mystery Bucket is equally likely to be selected.</li>
+        </ul>
+    </li>
+    <li><b>You report your second Belief that the Mystery Bucket is Bucket A.</b>
+	    <ul>
+            <li>Provide your best guess about the chance that the computer selected Bucket A knowing X <em>after</em> seeing the ball.</li>
+        </ul>
+    </li>
+</ol>
+<br>
+<br>
+<button class="otree-btn-next btn btn-primary" style="float:right;">Next</button>
+
+{{ endblock }}
+{{ block style }}
+<style>
+.otree-btn-next {
+        float:right;
+}
+
+</style>
+{{ endblock }}
+
+

@@ -1,0 +1,32 @@
+{{ block title }}
+{{ endblock }}
+
+{{ block content }}
+
+You will play the game 10 times. Each time you play the game, one of the buckets will be randomly and secretly chosen by the computer as the <b>Mystery Bucket</b>, with an X-in-10 chance that Bucket A is selected. The number X may be different each time you play the game, but you will always know in advance what the number is. For example, suppose X=6, then there is a six-in-ten chance (60 percent) that the computer selects Bucket A, and a four-in-ten chance (40 percent) that the computer selects Bucket B.
+<br>
+<br>
+    Given this X-in-10 chance, the selected bucket is determined as follows:
+<ul>
+    <li>The computer rolls a fair 10-sided die and compares the outcome to X. Each number on the die, from 1 to 10, is equally likely.</li>
+    <li>If the die roll is less than or equal to X then Bucket A is selected.</li>
+    <li>If the die roll is greater than X then Bucket B is selected.</li>
+</ul>
+
+Note that the Mystery Bucket may be the same or different each time you play the game. The computer will roll the die separately each time and the Mystery Bucket will depend on the outcome of that roll.
+<br>
+<br>
+<button class="otree-btn-next btn btn-primary" style="float:right;">Next</button>
+
+{{ endblock }}
+{{ block style }}
+<style>
+.otree-btn-next {
+        float:right;
+}
+
+</style>
+{{ endblock }}
+
+
+

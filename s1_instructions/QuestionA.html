@@ -1,0 +1,24 @@
+{{ block title }}
+
+{{ endblock }}
+{{ block content }}
+
+    {{ formfield 'response' label=question_label }}
+
+<br>
+<br>
+<button class="otree-btn-next btn btn-primary" style="float:right;">Next</button>
+
+{{ endblock }}
+
+{{ block style }}
+<style>
+.otree-form-errors {
+  display: none;
+ }
+
+ .otree-btn-next {
+        float:right;
+}
+</style>
+{{ endblock }}

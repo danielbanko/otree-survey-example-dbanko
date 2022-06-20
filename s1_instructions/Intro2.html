@@ -1,0 +1,58 @@
+{{ block title }}
+Questions about your background
+{{ endblock }}
+{{ block content }}
+    {{ formfield 'gender'}}
+    {{ formfield 'age'}}
+
+What is your race/ethnicity? (check all that apply)
+<table class="table">
+        <tr>
+                <td>White/Caucasian</td>
+                <td><input name="white" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td> African American </td>
+                <td><input name="african_amer" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td> Hispanic </td>
+                <td><input name="hispanic" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td> Asian or Pacific Islander </td>
+                <td><input name="asian" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td> Native American </td>
+                <td><input name="native_amer" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td> Other </td>
+                <td><input name="other" type="checkbox"></td>
+        </tr>
+</table>
+
+{{ formfield_errors 'white' }}
+
+    {{ formfield 'educ'}}
+<br>
+<br>
+<button class="otree-btn-next btn btn-primary" style="float:right;">Next</button>
+
+{{ endblock }}
+{{ block style }}
+<style>
+.otree-btn-next {
+        float:right;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+</style>
+{{ endblock }}
+

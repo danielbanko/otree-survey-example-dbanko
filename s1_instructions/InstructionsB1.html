@@ -1,0 +1,213 @@
+{{ block title }}
+Part 2
+{{ endblock }}
+
+{{ block content }}
+
+    <b>The Bucket Game</b>
+    <br>
+    <br>
+    <p>In this part you will play a computerized game that involves two buckets: Bucket A and Bucket B. Bucket A contains 4 light balls and 1 dark ball. Bucket B contains 1 light ball and 4 dark balls. These buckets and balls are all computerized and they are depicted below:
+    </p>
+<canvas id="canvas" width="600" height="300" style = "padding-left: 80px; padding-right: 0; margin-left: auto; margin-right: auto; display: block;"></canvas>
+<br>
+<br>
+<button class="otree-btn-next btn btn-primary" style="float:right;">Next</button>
+
+{{ endblock }}
+{{ block style }}
+<style>
+.otree-btn-next {
+        float:right;
+}
+
+</style>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+<!--create the canvas and styles of first object to draw-->
+var ctx = $('#canvas')[0].getContext("2d");
+var radius = 15;
+var orig_dist = 60;
+var distance = 60;
+ctx.strokeStyle = "black";
+ctx.lineWidth = 3;
+ctx.font = "bold 18px Arial";
+
+
+<!--draw the 2 buckets-->
+ctx.beginPath();
+ctx.strokeStyle = "black";
+<!--Draw Bucket A-->
+ctx.moveTo(50,50);
+ctx.lineTo(250,50);
+ctx.lineTo(250,150);
+ctx.lineTo(50,150);
+ctx.lineTo(50,50);
+
+<!--draw label-->
+ctx.fillText("Bucket A", 115, 175);
+ctx.stroke();
+ctx.closePath();
+
+<!--Draw Bucket B-->
+ctx.beginPath();
+ctx.strokeStyle = "black";
+
+ctx.moveTo(300,50);
+ctx.lineTo(500,50);
+ctx.lineTo(500,150);
+ctx.lineTo(300,150);
+ctx.lineTo(300,50);
+
+<!--draw labels-->
+ctx.fillText("Bucket B", 365, 175);
+ctx.stroke();
+ctx.closePath();
+
+<!--draw all the light balls in bucket A-->
+ctx.beginPath();
+ctx.strokeStyle = "black";
+<!--first row of light balls-->
+
+num_light = js_vars.num_light_balls
+num_light = 4
+if (num_light > 3) {
+    for (let i = 0; i < 3; i++) {
+        ctx.moveTo(30 + distance + radius, 80);
+        ctx.arc(30 + distance, 80, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+    distance = orig_dist;
+    <!--second row of light balls-->
+    for (let i = 0; i < num_light - 3; i++) {
+        ctx.moveTo(60 + distance + radius, 120);
+        ctx.arc(60 + distance, 120, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+} else {
+for (let i = 0; i < num_light; i++) {
+        ctx.moveTo(30 + distance + radius, 80);
+        ctx.arc(30 + distance, 80, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+    distance = orig_dist;
+}
+ctx.stroke();
+ctx.closePath();
+distance = orig_dist;
+
+<!--draw all the dark balls in bucket A-->
+ctx.beginPath();
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+
+num_dark = js_vars.num_dark_balls
+num_dark = 1
+
+if (num_dark > 3) {
+    <!--first row-->
+    for (let i = 0; i < 3; i++) {
+        ctx.moveTo(280 + num_light*distance + radius, 80);
+        ctx.arc(280 + distance, 80, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+    distance = orig_dist;
+    <!--second row-->
+    for (let i = 0; i < num_dark - 3; i++) {
+        ctx.moveTo(310 + distance + radius, 120);
+        ctx.arc(310 + distance, 120, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+} else {
+    if (num_light > 3) {
+         <!--second row-->
+        for (let i = 0; i < num_dark; i++) {
+            ctx.moveTo(60 + (num_light-2)*distance + radius, 120);
+            ctx.arc(60 + (num_light-2)*distance, 120, radius, 0, Math.PI * 2, true);
+            distance = distance+orig_dist;
+        }
+        distance = orig_dist;
+    }
+}
+
+
+ctx.fill();
+ctx.closePath();
+
+
+<!--draw all the light balls in bucket B-->
+ctx.beginPath();
+ctx.strokeStyle = "black";
+<!--first row of light balls-->
+
+<!--how many light balls?-->
+num_light = js_vars.num_light_balls
+num_light = 1
+if (num_light > 3) {
+    for (let i = 0; i < 3; i++) {
+        ctx.moveTo(30 + distance + radius, 80);
+        ctx.arc(30 + distance, 80, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+    distance = orig_dist;
+    <!--second row of light balls-->
+    for (let i = 0; i < num_light - 3; i++) {
+        ctx.moveTo(60 + distance + radius, 120);
+        ctx.arc(60 + distance, 120, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+} else {
+for (let i = 0; i < num_light; i++) {
+        ctx.moveTo(280 + distance + radius, 80);
+        ctx.arc(280 + distance, 80, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+    distance = orig_dist;
+}
+ctx.stroke();
+ctx.closePath();
+distance = orig_dist;
+
+<!--draw all the dark balls in bucket B-->
+ctx.beginPath();
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+
+num_dark = js_vars.num_dark_balls
+num_dark = 4
+
+if (num_dark > 3) {
+    <!--first row-->
+    distance = distance*(num_light+1)
+    for (let i = 0; i < 3 - num_light; i++) {
+        ctx.moveTo(280 + (num_light+1)*distance + radius, 80);
+        ctx.arc(280 + distance, 80, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+    distance = orig_dist;
+    <!--second row-->
+    for (let i = 0; i < num_dark - (3 - num_light); i++) {
+        ctx.moveTo(310 + distance + radius, 120);
+        ctx.arc(310 + distance, 120, radius, 0, Math.PI * 2, true);
+        distance = distance+orig_dist;
+    }
+} else {
+    if (num_light > 3) {
+         <!--second row-->
+        for (let i = 0; i < num_dark; i++) {
+            ctx.moveTo(310 + distance + radius, 120);
+            ctx.arc(310 + distance, 120, radius, 0, Math.PI * 2, true);
+            distance = distance+orig_dist;
+        }
+        distance = orig_dist;
+    }
+}
+
+
+ctx.fill();
+ctx.closePath();
+</script>
+{{ endblock }}
+

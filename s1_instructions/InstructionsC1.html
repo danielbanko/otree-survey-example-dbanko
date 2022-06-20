@@ -1,0 +1,126 @@
+{{ block title }}
+Your Belief
+{{ endblock }}
+
+{{ block content }}
+<link rel="stylesheet" type="text/css" href="{{ static 'global/slider.css' }}"/>
+<label class="col-form-label">
+
+You will report your Belief as a number between 0 and 100 to indicate your best guess about the percent chance (chance-in-100) that the Mystery Bucket is Bucket A.
+
+<br>
+<br>
+To report your Belief you will move a slider bar like the one below. For the slider to appear, you need to click anywhere on the 0-100 axis. The selected number will then appear underneath the axis.
+
+<br>
+<br>
+<div class = "range-slider" style='--min:0; --max:100; --step:5;'>
+    <input type="range" list="steplist" value="NA" min="0" max="100" step="1" id = "belief" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value)); output.innerHTML = this.value;"><div class='range-slider__progress'></div>
+<datalist id="steplist">
+    <option value="25" label="25" id="firstop"></option>
+    <option value="50" label="50" id="secondop"></option>
+    <option value="75" label="75" id="thirdop"></option>
+</datalist>
+</div>
+<br>
+<br>
+<div id="selected-belief">
+    <div id="belief-text">Currently selected Belief: </div><b><div id = "beliefDisplay"></div></b>
+</div>
+
+<br>
+<br>
+The number appearing after moving the slider indicates your Belief about the percent chance that Bucket A was selected and it is interpreted as follows:
+
+<table style="border: 1px solid; width: 70%; border-collapse: collapse; margin-left: auto; margin-right: auto;">
+    <tr>
+        <th>Your Belief</th><th>This means:</th>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>You think there is a 100 percent chance that the Mystery Bucket is Bucket A. That is, you are certain, beyond any doubt, that the Mystery Bucket is Bucket A.</td>
+    </tr>
+    <tr>
+        <td>51-99</td>
+        <td>You think there is a higher percent chance that the Mystery Bucket is Bucket A than Bucket B (higher numbers indicate greater certainty it is Bucket A).</td>
+    </tr>
+    <tr>
+        <td>50</td>
+        <td>You think there is an equal percent chance that the Mystery Bucket is Bucket A or Bucket B.</td>
+    </tr>
+    <tr>
+        <td>1-49</td>
+        <td>You think there is a lower percent chance that the Mystery Bucket is Bucket A than Bucket B
+(lower numbers indicate greater certainty it is Bucket B).</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>You think there is a 0 percent chance that the Mystery Bucket is Bucket A. That is, you are certain, beyond any doubt, that the Mystery Bucket is Bucket B.</td>
+    </tr>
+</table>
+<br>
+Next, we will ask you a series of questions to check that you understand how different values for your Belief are interpreted.
+
+<br>
+<br>
+<button class="otree-btn-next btn btn-primary" style="float:right;">Next</button>
+
+{{ endblock }}
+
+{{ block style }}
+<style>
+.otree-form-errors {
+  display: none;
+ }
+
+ #belief-text {
+  display: inline;
+ }
+
+ #beliefDisplay {
+    display: inline;
+ }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+.otree-btn-next {
+        float:right;
+}
+
+</style>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+var output = document.getElementById("beliefDisplay");
+
+$(document).ready(function () {
+        $('input[name=belief]').on('input change', function () {
+        $('input[name=belief]').addClass('myclass');
+        $('input[name=check_slider]').val(1);
+    });
+});
+
+
+
+if ( js_vars.round_number > 1 ) {
+    document.getElementById("belief").parentNode.style.setProperty("--value", js_vars.previous_belief);
+    $('input[name=belief]').val(js_vars.previous_belief);
+    $('input[name=belief]').addClass('myclass');
+    output.innerHTML = js_vars.previous_belief
+};
+</script>
+
+{{ endblock }}
+
